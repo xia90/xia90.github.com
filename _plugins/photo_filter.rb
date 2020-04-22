@@ -5,13 +5,9 @@ module Jekyll
     def photo_filter(files)
       photos = files.select {|photo| photo.relative_path.include?("original") }
       photos.sort_by do |photo|
-        date = `git log --format=%ai "#{photo.path}" | tail -1`
-        print photo.path
-        print "\n"
-        print date
-        print "\n\n"
-        date
-      end
+        date_raw = `git log --format=%ai "#{photo.path}" | head -1`
+        DateTime.strptime(date_raw, '%Y-%m-%d %H:%M:%S %z')
+      end.reverse
     end
   end
 end
