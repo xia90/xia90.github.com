@@ -5,11 +5,8 @@ module Jekyll
     def photo_filter(files)
       photos = files.select {|photo| photo.relative_path.include?("original") }
       photos.sort_by do |photo|
-        print photo.path
+        print `git log --format=%aD "#{photo.path}" | tail -1`
         print "\n"
-        print File.ctime(photo.path)
-        print "\n"
-        print "----\n"
         File.ctime(photo.path)
         # EXIFR::JPEG.new(photo.path).date_time.to_s
       end
