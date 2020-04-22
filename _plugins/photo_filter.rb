@@ -7,10 +7,10 @@ module Jekyll
       photos.sort_by do |photo|
         print photo.path
         print "\n"
-        print File.mtime(photo.path)
+        print File.ctime(photo.path)
         print "\n"
         print "----\n"
-        File.mtime(photo.path)
+        File.ctime(photo.path)
         # EXIFR::JPEG.new(photo.path).date_time.to_s
       end
     end
