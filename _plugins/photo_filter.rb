@@ -5,10 +5,10 @@ module Jekyll
     def photo_filter(files)
       photos = files.select {|photo| photo.relative_path.include?("original") }
       photos.sort_by do |photo|
-        date = DateTime.parse(`git log --format=%ai "#{photo.path}" | tail -1`).to_date
+        date = `git log --format=%ai "#{photo.path}" | tail -1`
         print photo.path
         print "\n"
-        print date.strftime("%Y-%m-%dT%H:%M:%S.%L%z")
+        print date
         print "\n\n"
         date
       end
