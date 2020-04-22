@@ -8,7 +8,7 @@ module Jekyll
         date = DateTime.parse(`git log --format=%ai "#{photo.path}" | tail -1`).to_date
         print photo.path
         print "\n"
-        print date
+        print date.strftime("%Y-%m-%dT%H:%M:%S.%L%z")
         print "\n\n"
         date
       end
