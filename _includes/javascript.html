@@ -3,7 +3,25 @@
   const RIGHT = 39;
   const LEFT = 37;
   const TARGET_CLASS = 'target';
-  const BODY_CLASS = 'target-open'
+  const $body = document.body
+  let scrollPosition = 0;
+
+  const scroll = {
+    lock() {
+      scrollPosition = window.pageYOffset;
+      $body.style.overflow = 'hidden';
+      $body.style.position = 'fixed';
+      $body.style.top = `-${scrollPosition}px`;
+      $body.style.width = '100%';
+    },
+    unlock() {
+      $body.style.removeProperty('overflow');
+      $body.style.removeProperty('position');
+      $body.style.removeProperty('top');
+      $body.style.removeProperty('width');
+      window.scrollTo(0, scrollPosition);
+    }
+  };
 
   const clickNavigationButton = (buttonClass) => {
     const id = window.history.state && window.history.state.id;
@@ -19,7 +37,7 @@
     const title = photo.getAttribute('title');
     removeTargetClass();
     photo.classList.add(TARGET_CLASS);
-    document.body.classList.add(BODY_CLASS);
+    scroll.lock()
     document.title = title;
     if (href) {
       window.history.pushState({id: id}, '', href);
@@ -40,7 +58,7 @@
     targets.forEach((target) => {
       target.classList.remove(TARGET_CLASS);
     });
-    document.body.classList.add(BODY_CLASS);
+    scroll.unlock()
   }
 
   const handleClick = (selector, event, callback) => {
