@@ -24,8 +24,7 @@ author:
   name: Luke Karrys
   email: luke@lukekarrys.com
   website: https://lukekarrys.com
-description: >- # this means to ignore newlines until "baseurl:"
-  minimalistic, self-hosted photo stream.
+description: luke's photo stream.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://photos.lukelov.es/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: lukekarrys
