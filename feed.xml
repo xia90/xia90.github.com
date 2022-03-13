@@ -50,8 +50,8 @@
 					{% endif %}
 				</author>
 			{% endif %}
-			<media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ site.url }}{{ image.name | xml_escape | uri_escape | processed_path: 'large' }}" />
-			<media:content medium="image" url="{{ site.url }}{{ image.name | xml_escape | uri_escape | processed_path: 'large' }}" xmlns:media="http://search.yahoo.com/mrss/" />
+			<media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ site.url }}{{ image.name | uri_escape | processed_path: 'large' }}" />
+			<media:content medium="image" url="{{ site.url }}{{ image.name | uri_escape | processed_path: 'large' }}" xmlns:media="http://search.yahoo.com/mrss/" />
 		</entry>
 	{% endfor %}
 </feed>
